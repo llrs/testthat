@@ -133,3 +133,7 @@ local_tempfile1 <- function(lines, env = parent.frame()) {
   writeLines(lines, path)
   path
 }
+
+use_browser <- function() {
+  browser()
+}

@@ -1,5 +1,10 @@
 # testthat (development version)
 
+* Calls to `browser()` from within a non-interactive test are now
+  caught as errors, rather than silently ignored. This should help
+  catch accidentally left-behind debugging usages of `browser()` in
+  package code. (#1825)
+
 # testthat 3.1.9
 
 * New `expect_contains()` and `expect_in()` that works similarly to 

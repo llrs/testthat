@@ -190,6 +190,12 @@ test_code <- function(test, code, env, default_reporter, skip_on_empty = TRUE) {
   old <- options(rlang_trace_top_env = test_env)[[1]]
   on.exit(options(rlang_trace_top_env = old), add = TRUE)
 
+  if (!interactive()) {
+    local_bindings_rebind(browser = function(...) {
+      stop("browser() called in non-interactive context")
+    }, .env = .BaseNamespaceEnv)
+  }
+
   withr::local_options(testthat_topenv = test_env)
 
   before <- inspect_state()
